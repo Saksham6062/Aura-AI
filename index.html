@@ -37,7 +37,7 @@
   width: 120px;
   height: 120px;
   margin-bottom: 20px;
-  animation: spin 2s linear infinite;
+  /* Removed rotation animation */
 }
 
 /* Glow text effect */
@@ -66,13 +66,7 @@
     0 0 10px #9d5eff;
 }
 
-/* Spinner animation */
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Glow pulse */
+/* Glow pulse animation */
 @keyframes pulse {
   0% { text-shadow: 0 0 5px #7c3aed, 0 0 10px #7c3aed, 0 0 20px #9d5eff; }
   100% { text-shadow: 0 0 15px #9d5eff, 0 0 25px #7c3aed, 0 0 40px #9d5eff; }
