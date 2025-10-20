@@ -104,7 +104,46 @@ body {
   padding: 40px 20px;
   transition: background 0.5s, color 0.5s;
 }
+/* Median top section */
+.median-section {
+  background: linear-gradient(135deg, #7c3aed, #56ccf2);
+  padding: 40px 20px;
+  border-radius: 16px;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4);
+}
 
+.median-section h1 {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.median-section p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.median-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background-color: #fff;
+  color: #7c3aed;
+  font-weight: 600;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.median-btn:hover {
+  background-color: #9d5eff;
+  color: #fff;
+  transform: translateY(-3px);
+}
+  
 body.dark { background: linear-gradient(120deg, var(--bg-dark), #0a0f1c, #121827); color: var(--text-dark);}
 body.light { background: linear-gradient(120deg, var(--bg-light), #e0e4eb, #f5f7fa); color: var(--text-light);}
 
@@ -272,6 +311,14 @@ body.light .toggle-btn { background: var(--accent1-light); color:#fff; }
 <div class="container">
   <h1>Aura AI Studio</h1>
   <p class="subtitle">Aura AI by Saksham Intelligence</p>
+  <div class="container">
+
+  <!-- Median App Highlight Section -->
+  <section class="median-section">
+    <h1>Aura AI App on Median</h1>
+    <p>Run Aura AI Studio as a mobile app! Always synced with updates from our website.</p>
+    <a href="https://median.co/share/eebomwd" target="_blank" class="median-btn">Open Median App</a>
+  </section>
 
   <div class="grid">
     <a href="https://saksham6062.github.io/Ai-by-Saksham/" class="card">
