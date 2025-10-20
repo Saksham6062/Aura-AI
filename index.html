@@ -17,6 +17,73 @@
   }
 </script>
 <style>
+  /* Splash Screen */
+#splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0b0b0b; /* dark background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+/* Splash content */
+.splash-content img {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 20px;
+  animation: spin 2s linear infinite;
+}
+
+/* Glow text effect */
+.glow-text {
+  color: #7c3aed;
+  font-size: 2em;
+  text-align: center;
+  text-shadow:
+    0 0 5px #7c3aed,
+    0 0 10px #7c3aed,
+    0 0 20px #7c3aed,
+    0 0 30px #9d5eff,
+    0 0 40px #9d5eff,
+    0 0 50px #9d5eff;
+  animation: pulse 1.5s infinite alternate;
+  margin: 0;
+}
+
+/* Subtitle smaller glow */
+.splash-content p.glow-text {
+  font-size: 1.1em;
+  margin-top: 10px;
+  text-shadow:
+    0 0 3px #7c3aed,
+    0 0 6px #7c3aed,
+    0 0 10px #9d5eff;
+}
+
+/* Spinner animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Glow pulse */
+@keyframes pulse {
+  0% { text-shadow: 0 0 5px #7c3aed, 0 0 10px #7c3aed, 0 0 20px #9d5eff; }
+  100% { text-shadow: 0 0 15px #9d5eff, 0 0 25px #7c3aed, 0 0 40px #9d5eff; }
+}
+
+/* Fade out splash screen */
+.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
 :root {
   --accent1-dark: #7c3aed;
   --accent2-dark: #2563eb;
@@ -195,6 +262,15 @@ body.light .toggle-btn { background: var(--accent1-light); color:#fff; }
 </style>
 </head>
 <body class="dark">
+  
+  <!-- Aura AI Splash Screen -->
+<div id="splash-screen">
+  <div class="splash-content">
+    <img src="favicon.png" alt="Aura AI Logo" />
+    <h1 class="glow-text">Aura AI Studio</h1>
+    <p class="glow-text">Exploring the world of AI...</p>
+  </div>
+</div>
 
 <canvas id="particles"></canvas>
 <button class="toggle-btn" onclick="toggleTheme()">Switch Theme</button>
@@ -311,6 +387,12 @@ function animate() {
   requestAnimationFrame(animate);
 }
 animate();
+  window.addEventListener('load', () => {
+    const splash = document.getElementById('splash-screen');
+    setTimeout(() => {
+      splash.classList.add('fade-out');
+    }, 2500); // Duration of splash screen
+  });
 </script>
 </body>
 </html>
