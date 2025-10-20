@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aura AI - Specialized / Business AI</title>
+<title>Google Branch — Aura AI Studio</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -13,27 +13,35 @@
   --card-dark: rgba(18, 24, 39, 0.7);
   --text-dark: #e6eef8;
   --muted-dark: #9fb3d6;
-
   --accent1-light: #ff6ec7;
   --accent2-light: #56ccf2;
   --bg-light: #f5f7fa;
   --card-light: rgba(255, 255, 255, 0.8);
   --text-light: #0d1117;
   --muted-light: #5a5a5a;
-
   --card-radius: 16px;
 }
 
 * {margin:0; padding:0; box-sizing:border-box;}
-body {font-family: 'Inter', sans-serif; overflow-x:hidden; display:block; padding:40px 20px; transition: background 0.5s, color 0.5s;}
+body {
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  display: block;
+  padding: 60px 20px;
+  transition: background 0.5s, color 0.5s;
+}
 body.dark { background: linear-gradient(120deg, var(--bg-dark), #0a0f1c, #121827); color: var(--text-dark);}
 body.light { background: linear-gradient(120deg, var(--bg-light), #e0e4eb, #f5f7fa); color: var(--text-light);}
 
-canvas { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; }
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
 
-.container { position: relative; z-index:1; max-width:960px; margin:0 auto; text-align:center; }
-
-h1 { font-size:46px; margin-bottom:12px;
+h1 {
+  font-size: 42px;
+  margin-bottom: 12px;
   background: linear-gradient(270deg, #7c3aed, #2563eb, #ff6ec7, #56ccf2);
   background-size: 800% 800%;
   -webkit-background-clip: text;
@@ -41,7 +49,9 @@ h1 { font-size:46px; margin-bottom:12px;
   animation: gradientShift 10s ease infinite;
 }
 
-p.subtitle { font-size:24px; margin-bottom:28px;
+p.subtitle {
+  font-size: 20px;
+  margin-bottom: 30px;
   background: linear-gradient(270deg, #ff6ec7, #56ccf2, #7c3aed, #2563eb);
   background-size: 800% 800%;
   -webkit-background-clip: text;
@@ -49,94 +59,138 @@ p.subtitle { font-size:24px; margin-bottom:28px;
   animation: gradientShift 12s ease infinite;
 }
 
-@keyframes gradientShift {0% {background-position:0% 50%;}50% {background-position:100% 50%;}100% {background-position:0% 50%;}}
+@keyframes gradientShift {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
 
-.grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:22px; position: relative; z-index:1; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+}
 
-.card { border-radius: var(--card-radius); padding:28px 20px; text-align:center; position:relative; overflow:hidden; cursor:pointer; transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.5s, color 0.5s; }
-body.dark .card { background: var(--card-dark); color: var(--text-dark); border:1px solid rgba(255,255,255,0.05); backdrop-filter: blur(12px);}
-body.light .card { background: var(--card-light); color: var(--text-light); border:1px solid rgba(0,0,0,0.08); backdrop-filter: blur(12px); }
-
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  border-radius: var(--card-radius);
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.5s, color 0.5s;
+}
 .card::before {
   content: '';
-  position: absolute; top:-50%; left:-50%; width:200%; height:200%;
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
   background: linear-gradient(45deg, rgba(124,58,237,0.15), rgba(37,99,235,0.15), rgba(124,58,237,0.15));
-  transform: rotate(45deg); transition: all 0.5s ease; opacity:0; animation: moveGlow 6s linear infinite;
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+  animation: moveGlow 6s linear infinite;
 }
-.card:hover::before { opacity:1; }
-@keyframes moveGlow { 0% {transform: rotate(0deg) translateX(0);}50% {transform: rotate(30deg) translateX(10px);}100% {transform: rotate(0deg) translateX(0);} }
-
+.card:hover::before { opacity: 1; }
+@keyframes moveGlow {
+  0% {transform: rotate(0deg) translateX(0);}
+  50% {transform: rotate(30deg) translateX(10px);}
+  100% {transform: rotate(0deg) translateX(0);}
+}
+body.dark .card { background: var(--card-dark); color: var(--text-dark); border:1px solid rgba(255,255,255,0.05); backdrop-filter: blur(12px); }
+body.light .card { background: var(--card-light); color: var(--text-light); border:1px solid rgba(0,0,0,0.08); backdrop-filter: blur(12px); }
 .card:hover { transform: translateY(-10px) scale(1.05); box-shadow:0 18px 40px rgba(124,58,237,0.5); }
 
-.card h2 { font-size:20px; margin-bottom:10px; display:flex; align-items:center; justify-content:center; gap:10px; }
-.card p { font-size:14px; }
+.card h2 { font-size: 18px; margin-bottom: 10px; }
+.card p { font-size: 14px; }
 
-.card svg { width:24px; height:24px; fill: var(--accent1-dark); transition: transform 0.35s ease, fill 0.35s; animation: floatIcon 3s ease-in-out infinite; }
-body.light .card svg { fill: var(--accent1-light); }
-.card:hover svg { transform: scale(1.3) rotate(10deg); }
-@keyframes floatIcon { 0%, 100% { transform: translateY(0) rotate(0deg);} 50% { transform: translateY(-6px) rotate(5deg);} }
-
-footer { margin-top:28px; font-size:12px; color: var(--muted-dark); text-align:center; transition: color 0.5s; }
+footer {
+  margin-top: 30px;
+  font-size: 12px;
+  color: var(--muted-dark);
+  text-align: center;
+  transition: color 0.5s;
+}
 body.light footer { color: var(--muted-light); }
 
-.toggle-btn { position: fixed; top:20px; right:20px; background: var(--accent1-dark); border:none; border-radius:50px; color:#fff; padding:8px 16px; cursor:pointer; font-weight:600; transition: background 0.3s; z-index:10; }
-body.light .toggle-btn { background: var(--accent1-light); color:#fff; }
+.toggle-btn, .back-btn {
+  position: fixed;
+  top: 20px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #fff;
+  z-index: 10;
+  transition: background 0.3s;
+}
+.toggle-btn {
+  right: 20px;
+  background: var(--accent1-dark);
+}
+.back-btn {
+  left: 20px;
+  background: var(--accent2-dark);
+}
+body.light .toggle-btn { background: var(--accent1-light); }
+body.light .back-btn { background: var(--accent2-light); }
 
-@media (max-width:420px){ h1{font-size:36px;} p.subtitle{font-size:20px;} .card{padding:20px 16px;} .card h2{font-size:18px;} }
+a { text-decoration: none; color: inherit; }
+
+@media (max-width: 420px) {
+  h1 {font-size: 34px;}
+  p.subtitle {font-size: 18px;}
+  .card {height: 180px; padding: 16px;}
+}
 </style>
 </head>
 <body class="dark">
 
-<canvas id="particles"></canvas>
-
+<button class="back-btn" onclick="window.location.href='../index.html'">← Back to Aura AI Studio</button>
 <button class="toggle-btn" onclick="toggleTheme()">Switch Theme</button>
 
 <div class="container">
-  <h1>Aura AI Studio</h1>
-  <p class="subtitle">Specialized / Business AI</p>
+  <h1>Google Branch</h1>
+  <p class="subtitle">Part of Aura AI Studio — Explore Google's AI Ecosystem</p>
 
   <div class="grid">
-    <a class="card" href="https://www.jasper.ai" target="_blank">
-      <h2>Jasper AI</h2>
-      <p>AI writing assistant</p>
+    <a href="https://cloud.google.com/vertex-ai" class="card" target="_blank">
+      <h2>Vertex AI Studio</h2>
+      <p>Google Cloud’s unified platform for building, deploying, and scaling AI models.</p>
     </a>
 
-    <a class="card" href="https://www.copy.ai" target="_blank">
-      <h2>Copy.ai</h2>
-      <p>AI copywriting tool</p>
+    <a href="https://aistudio.google.com/" class="card" target="_blank">
+      <h2>Google AI Studio</h2>
+      <p>Prompt, test, and build with Gemini models directly in Google AI Studio.</p>
     </a>
 
-    <a class="card" href="https://www.synthesia.io" target="_blank">
-      <h2>Synthesia</h2>
-      <p>AI video avatars</p>
+    <a href="https://gemini.google.com/" class="card" target="_blank">
+      <h2>Gemini</h2>
+      <p>Google’s flagship AI — for chat, coding, and creative tasks across platforms.</p>
     </a>
 
-    <a class="card" href="https://pictory.ai" target="_blank">
-      <h2>Pictory</h2>
-      <p>AI video creation</p>
+    <a href="https://labs.google/" class="card" target="_blank">
+      <h2>Google Labs (Flow)</h2>
+      <p>Experimental AI research and projects from Google Labs.</p>
     </a>
   </div>
 
-  <footer>Hover over a card to see glowing effect</footer>
+  <footer>Google AI Branch · Aura AI Studio</footer>
 </div>
 
 <script>
-function toggleTheme() { document.body.classList.toggle('dark'); document.body.classList.toggle('light'); }
-
-// Particle background
-const canvas = document.getElementById('particles');
-const ctx = canvas.getContext('2d');
-let w,h;
-function resizeCanvas(){ w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; }
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
-
-class Particle { constructor(){ this.reset(); } reset(){ this.x=Math.random()*w; this.y=Math.random()*h; this.vx=(Math.random()-0.5)*0.5; this.vy=(Math.random()-0.5)*0.5; this.size=Math.random()*2+1; this.alpha=Math.random()*0.5+0.2; } draw(){ ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2); ctx.fillStyle=`rgba(124,58,237,${this.alpha})`; ctx.fill(); } update(){ this.x+=this.vx; this.y+=this.vy; if(this.x<0||this.x>w||this.y<0||this.y>h) this.reset(); this.draw(); } }
-const particles=[];
-for(let i=0;i<120;i++) particles.push(new Particle());
-function animate(){ ctx.clearRect(0,0,w,h); particles.forEach(p=>p.update()); for(let i=0;i<particles.length;i++){ for(let j=i+1;j<particles.length;j++){ let dx=particles[i].x-particles[j].x; let dy=particles[i].y-particles[j].y; let dist=Math.sqrt(dx*dx+dy*dy); if(dist<100){ ctx.beginPath(); ctx.strokeStyle=`rgba(124,58,237,${1-dist/100})`; ctx.lineWidth=0.5; ctx.moveTo(particles[i].x,particles[i].y); ctx.lineTo(particles[j].x,particles[j].y); ctx.stroke(); } } } requestAnimationFrame(animate); }
-animate();
+function toggleTheme() {
+  document.body.classList.toggle('dark');
+  document.body.classList.toggle('light');
+}
 </script>
-
 </body>
 </html>
